@@ -3,6 +3,7 @@ package com.example.tp1laboratorio3;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -33,6 +34,12 @@ public class RegistroActivityViewModel extends AndroidViewModel {
 
         context.startActivity(intent);
 
+    }
+    public void obtenerDatos(Bundle bundle){
+        if(bundle!=null){
+            Usuario usuario= (Usuario) bundle.getSerializable("Usuario");
+            usuarioM.setValue(usuario);
+        }
     }
 
 }

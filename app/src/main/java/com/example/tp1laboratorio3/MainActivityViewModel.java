@@ -3,6 +3,7 @@ package com.example.tp1laboratorio3;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,10 @@ public class MainActivityViewModel extends AndroidViewModel {
         }else{
             Intent intent= new Intent(context, RegistroActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("Usuario", usuario);
+            Bundle bundle= new Bundle();
+            bundle.putSerializable("Usuario", usuario);
+            intent.putExtras(bundle);
+
             context.startActivity(intent);
         }
 

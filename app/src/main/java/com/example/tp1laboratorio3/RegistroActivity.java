@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.tp1laboratorio3.databinding.ActivityRegistroBinding;
 
@@ -27,6 +28,24 @@ private RegistroActivityViewModel vm;
                 binding.etMailRegistro.setText(usuario.getMail());
                 binding.etNombre.setText(usuario.getNombre());
                 binding.etpassRegistro.setText(usuario.getPassword());
+            }
+        });
+        Bundle bundle= getIntent().getExtras();
+        vm.obtenerDatos(bundle);
+
+
+        binding.btGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nombre= binding.etNombre.getText().toString();
+                String apellido=binding.etApellido.getText().toString();
+                String mail=binding.etMailRegistro.getText().toString();
+                String pass=binding.etpassRegistro.getText().toString();
+                String dni=binding.etDni.getText().toString();
+
+                Usuario usuario= new Usuario(dni,apellido,nombre,mail,pass);
+                vm.guardar(usuario);
+
             }
         });
 
